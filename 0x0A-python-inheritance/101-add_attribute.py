@@ -1,16 +1,14 @@
 #!/usr/bin/python3
-'''A module for manipulating objects.
-'''
-
-
 def add_attribute(obj, name, value):
-    '''Tries to add a new attribute to an object if possible.
+    """ Function that adds a new attribute to an object
     Args:
-        obj (any): The object to modify.
-        name (str): The name of the attribute.
-        value (any): The value of the attribute.
-    '''
-    if ('__dict__' in dir(obj)) and (type(obj.__dict__) is dict):
-        obj.__dict__[name] = value
-    else:
+        obj: object
+        name: attribute name
+        value: attribute value
+    Raises:
+        TypeError: when the attribute can't be added
+    """
+
+    if not hasattr(obj, "__dict__"):
         raise TypeError("can't add new attribute")
+    setattr(obj, name, value)

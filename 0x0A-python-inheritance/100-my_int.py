@@ -1,29 +1,19 @@
 #!/usr/bin/python3
-'''A module containing a rebellious int.
-'''
+"""
+Contains the class MyInt
+"""
 
 
 class MyInt(int):
-    '''Represents a rebellious integer object.
-    '''
-    def __eq__(self, value):
-        '''Checks if the given value is not equal to the
-        value of this object.
-        Args:
-            value (MyInt): The value to be compared against.
-        Returns:
-            bool: True if the value is not equal to the value
-            stored by this object.
-        '''
-        return super().__ne__(value)
+    """rebel version of an integer, perfect for opposite day!"""
+    def __new__(cls, *args, **kwargs):
+        """create a new instance of the class"""
+        return super(MyInt, cls).__new__(cls, *args, **kwargs)
 
-    def __ne__(self, value):
-        '''Checks if the given value is equal to the value
-        of this object.
-        Args:
-            value (MyInt): The value to be compared against.
-        Returns:
-            bool: True if the value is equal to the value
-            stored by this object.
-        '''
-        return super().__eq__(value)
+    def __eq__(self, other):
+        """what was != is now =="""
+        return int(self) != other
+
+    def __ne__(self, other):
+        """what was == is now !="""
+        return int(self) == other
